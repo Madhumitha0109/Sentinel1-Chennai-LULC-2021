@@ -44,9 +44,9 @@ The study area is located in Chennai, Tamil Nadu, India.
 | South | 12.90° N |
 | North | 13.05° N |
 
-**Coordinate Reference System:** EPSG:32644  
-**Spatial Resolution:** 10 metres  
-**Raster Dimensions:** 1,664 × 1,633 pixels
+- **Coordinate Reference System:** EPSG:32644
+- **Spatial Resolution:** 10 metres
+- **Raster Dimensions:** 1,664 × 1,633 pixels
 
 ## 4. Datasets
 
@@ -63,7 +63,7 @@ The S1_AI4LCC dataset provides Sentinel-1 SAR input data and labelled land-cover
 Sentinel-1 GRD imagery was obtained through Microsoft Planetary Computer.
 
 - Data source: https://planetarycomputer.microsoft.com/
-- Collection: sentinel-1-grd
+- Collection: `sentinel-1-grd`
 - Study period: 2021
 - Polarizations: VH and VV
 - Processing: Monthly median composites
@@ -114,6 +114,7 @@ The project uses an encoder-decoder U-Net architecture for semantic segmentation
 The saved model checkpoint contains the model state dictionary and training metadata.
 
 **Checkpoint details:**
+
 - Training epoch: 13
 - Validation loss: 0.88901167
 
@@ -125,32 +126,3 @@ Sentinel1-Chennai-LULC-2021/
 ├── README.md
 ├── deep_learning.ipynb
 └── prototype_prediction.py
-| File | Description |
-|---|---|
-| README.md | Project documentation |
-| deep_learning.ipynb | Complete Google Colab notebook containing data preparation, model training, prediction, validation and visualization |
-| prototype_prediction.py | Prototype code for monthly Sentinel-1 data retrieval and LULC prediction |
-
-The trained model weights are hosted separately on Hugging Face.
-
-## 9. Environment and Dependencies
-
-The project was developed using Google Colab and Python.
-
-Main libraries:
-
-- NumPy
-- Pandas
-- PyTorch
-- Rasterio
-- Affine
-- Planetary Computer
-- PySTAC Client
-- ODC-STAC
-- Hugging Face Hub
-- Xarray
-
-Install the main prototype dependencies using:
-
-```bash
-pip install numpy pandas torch rasterio affine planetary-computer pystac-client odc-stac huggingface-hub xarray

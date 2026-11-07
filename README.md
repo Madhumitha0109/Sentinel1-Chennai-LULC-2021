@@ -1,11 +1,5 @@
 # Sentinel-1-Based Monthly Land Use and Land Cover Mapping
 
-**Deep Learning Project — SRH University Heidelberg**  
-**Student:** Madhumitha Ramakrishnan  
-**Student ID:** 100004761  
-**Primary Study Area:** Chennai, Tamil Nadu, India  
-**Study Period:** 2021
-
 ---
 
 ## 1. Project Overview

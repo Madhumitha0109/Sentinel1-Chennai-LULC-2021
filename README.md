@@ -568,3 +568,61 @@ https://github.com/Madhumitha0109/Sentinel1-Chennai-LULC-2021/blob/main/requirem
 Chennai, Tamil Nadu, India | 2021 case study
 
 </div>
+
+
+### 11.3 Separate transfer experiment: France-trained checkpoint applied to Chennai
+
+A later transfer experiment was conducted using the epoch-13 U-Net V2 checkpoint trained on S1_AI4LCC data. The checkpoint was applied to the January 2021 Chennai VH/VV raster using tiled inference. This is a separate experiment from the earlier prototype comparison in Section 11.1; its metrics must not be substituted for or combined with the earlier 46.60% overall accuracy / 16.93% mIoU result.
+
+The transfer prediction used annual Chennai VH/VV normalization statistics calculated from the twelve 2021 monthly composites (VH mean -18.05117, VH standard deviation 5.2670507; VV mean -8.825205, VV standard deviation 6.6482267). Pixels with no valid monthly observations were treated as invalid. The January prediction was compared with the aligned ESA WorldCover 2021 raster.
+
+**ESA-to-model grouping used in this transfer experiment:**
+
+| ESA WorldCover class ID | ESA class | Project class |
+|---:|---|---|
+| 50 | Built-up | Urban |
+| 40 | Cropland | Agriculture |
+| 10 | Tree cover | Forest/semi-natural |
+| 20 | Shrubland | Forest/semi-natural |
+| 30 | Grassland | Forest/semi-natural |
+| 60 | Bare/sparse vegetation | Forest/semi-natural |
+| 90 | Herbaceous wetland | Wetlands |
+| 80 | Permanent water bodies | Water |
+
+This grouping is approximate. In particular, ESA class 60 (bare/sparse vegetation) is grouped with forest/semi-natural for this experiment. This differs from the earlier comparison described in Section 11.1, where bare/sparse vegetation and unmatched classes were excluded. The two comparisons therefore use different reference mappings and are not directly comparable.
+
+**Transfer experiment metrics:**
+
+| Metric | Result |
+|---|---:|
+| Evaluated pixels | 2,702,120 |
+| Overall accuracy | 59.28% |
+| Macro F1-score | 39.02% |
+| Mean IoU | 28.94% |
+
+| Class | Precision | Recall | F1-score | IoU |
+|---|---:|---:|---:|---:|
+| Urban | 0.79 | 0.53 | 0.64 | 46.82% |
+| Agriculture | 0.02 | 0.02 | 0.02 | 1.21% |
+| Forest/semi-natural | 0.41 | 0.82 | 0.55 | 37.61% |
+| Wetlands | 0.00 | 0.00 | 0.00 | 0.00% |
+| Water | 0.91 | 0.63 | 0.74 | 59.09% |
+
+Rows in the confusion matrix below are ESA reference classes and columns are model predictions. Class order: Urban, Agriculture, Forest/semi-natural, Wetlands, Water.
+
+```text
+[[ 690942   1339 595172      0   5841]
+ [  21756   3259  96329      0   9817]
+ [  96365   8731 516786      0  10789]
+ [   1907   1440   6710      0  11182]
+ [  62516 127229  43217      0 390793]]
+```
+
+The transfer prediction raster uses model indices 0–4 and 255 for nodata, unlike the prototype's monthly GeoTIFF export convention of class IDs 1–5. Keep these products and legends distinct when interpreting or displaying them. The transfer results show useful agreement for urban, forest/semi-natural and water pixels, but very weak agriculture agreement and no correctly predicted wetland pixels. These results indicate substantial geographic/domain-transfer limitations and are not field-validated accuracy.
+
+Supporting transfer-evaluation files are stored in `outputs/Transfer_Evaluation/`:
+- `Chennai_Transfer_Evaluation.json`
+- `Chennai_Transfer_Confusion_Matrix.csv`
+- `Chennai_Transfer_Class_IoU.csv`
+- `Chennai_Transfer_Visualization.png`
+

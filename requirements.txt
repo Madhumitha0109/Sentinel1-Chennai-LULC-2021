@@ -8,3 +8,4 @@ pystac-client
 odc-stac
 huggingface-hub
 xarray
+matplotlib

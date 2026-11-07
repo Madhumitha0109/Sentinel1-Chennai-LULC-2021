@@ -624,5 +624,5 @@ Supporting transfer-evaluation files are stored in `outputs/Transfer_Evaluation/
 - `Chennai_Transfer_Evaluation.json`
 - `Chennai_Transfer_Confusion_Matrix.csv`
 - `Chennai_Transfer_Class_IoU.csv`
-- `Chennai_Transfer_Visualization.png`
+- The transfer visualization is generated in the working Google Drive results folder; its image file has not yet been added to this repository.
 

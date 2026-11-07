@@ -125,3 +125,32 @@ Sentinel1-Chennai-LULC-2021/
 ├── README.md
 ├── deep_learning.ipynb
 └── prototype_prediction.py
+| File | Description |
+|---|---|
+| README.md | Project documentation |
+| deep_learning.ipynb | Complete Google Colab notebook containing data preparation, model training, prediction, validation and visualization |
+| prototype_prediction.py | Prototype code for monthly Sentinel-1 data retrieval and LULC prediction |
+
+The trained model weights are hosted separately on Hugging Face.
+
+## 9. Environment and Dependencies
+
+The project was developed using Google Colab and Python.
+
+Main libraries:
+
+- NumPy
+- Pandas
+- PyTorch
+- Rasterio
+- Affine
+- Planetary Computer
+- PySTAC Client
+- ODC-STAC
+- Hugging Face Hub
+- Xarray
+
+Install the main prototype dependencies using:
+
+```bash
+pip install numpy pandas torch rasterio affine planetary-computer pystac-client odc-stac huggingface-hub xarray
